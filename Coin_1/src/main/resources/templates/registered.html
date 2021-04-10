@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+
+
+<link th:href="@{/static/css/registered.css}" rel="stylesheet"
+	type="text/css">
+<script src="https://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+
+<script>
+	$(document).ready(function() {
+
+		$("#registered").submit(function() {
+
+			var val = $('input:checkbox[name="check"]:checked').val();
+
+			if (val == null) {
+				alert("請勾選我同意服務條款");
+				return false;
+			}
+			;
+
+		});
+
+	});
+</script>
+<!-- 頁面緩存判斷從新整理 -->
+<script th:src="@{/static/js/reorganize.js}"></script>
+</head>
+
+<body>
+
+
+
+	<div id="table">
+		<div id="logo">LOGO</div>
+
+		<p class="hov">
+			<a th:href="@{/coin/user/gotosignin}">登入</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+				class="res">註冊</span>
+		</p>
+
+		<form th:action="@{/coin/user/registeredmembers}" id="registered"
+			method="POST">
+			<div class="character">
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;電子郵件<br>
+				<input type="text" class="tx" name="email"> <br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;密碼<br>
+			</div>
+			<input type="password" name="password" class="tx"> <br>
+			<br> <br> <br>
+			<div class="buttom">
+				<br> 至少8個字符的長度<br> <br>至少要有一個小寫和大寫字符<br> <br>必須包含至少一個特殊符號(!@#$%^&*)
+				<br>&nbsp;
+			</div>
+			<br>
+			<div class="agree">
+				<input type="checkbox" id="check" name="check" class="ts">我同意xxx的服務條款
+			</div>
+			<br> <input type="submit" value="註冊" class="registered">
+		</form>
+
+	</div>
+
+</body>
+
+</html>

@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<meta http-equiv="refresh" content="5">
+<title>Modern Business - Start Bootstrap Template</title>
+
+
+<link th:href="@{/static/vendor/bootstrap/css/bootstrap.css}"
+	rel="stylesheet" type="text/css">
+
+<link th:href="@{/static/css/modern-business.css}" rel="stylesheet"
+	type="text/css">
+
+
+
+<style>
+.ml-auto, .mx-auto {
+	margin-left: auto !important;
+}
+
+.table thead th {
+	vertical-align: bottom;
+	/* border-bottom: 2px solid black; */
+	background: #2889fc;
+	color: white;
+}
+
+.c1 {
+	border-top-right-radius: 20px;
+}
+
+.c2 {
+	border-top-left-radius: 20px;
+}
+
+.Tabledistance {
+	padding-left: 10%;
+	padding-right: 20%;
+}
+
+.user {
+	color: red;
+	font-size: 22px;
+}
+
+.table {
+	width: 60%;
+	float: left;
+}
+
+.table1 {
+	width: 20%;
+	float: left;
+}
+
+.table2 {
+	width: 80%;
+}
+
+.tables {
+	width: 40%
+}
+</style>
+
+</head>
+
+<body>
+
+	<!-- Page Content -->
+	<nav
+		class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+		<div class="container">
+			<a class="navbar-brand" th:href="@{/coin/user/gotomyindex}">logo預定</a>
+			<button class="navbar-toggler navbar-toggler-right" type="button"
+				data-toggle="collapse" data-target="#navbarResponsive"
+				aria-controls="navbarResponsive" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto" th:if="${session.email ==null}">
+
+
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{/coin/user/gotoregistered}">註冊</a></li>
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{/coin/user/gotosignin}">登入</a></li>
+				</ul>
+				<ul class="navbar-nav ml-auto" th:if="${session.email !=null}">
+					<li class="nav-item"><span class="user"
+						th:text="${session.email} "></span></li>
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{/coin/user/gotomyusers}">個人資料</a></li>
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{/coin/user/logoutofthismailbox}">登出</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+
+
+
+
+	<div class="Tabledistance">
+
+		<!--
+		<table class="table1 table">
+			<thead>
+				<tr>
+					<th class="c2" scope="col"></th>
+					<th scope="col">廠區</th>
+
+					<th scope="col" class="c1"></th>
+				</tr>
+			</thead>
+
+
+
+
+			<tbody>
+				<tr>
+					<th scope="row">
+					<td>A</td>
+					</th>
+				</tr>
+				<tr>
+					<th scope="row">
+					<td>B</td>
+					</th>
+				</tr>
+				<tr>
+					<th scope="row">
+					<td>C</td>
+					</th>
+				</tr>
+			</tbody>
+		</table>
+
+		<table class="table2 table">
+			<thead>
+				<tr>
+					<th class="c2" scope="col"></th>
+					<th scope="col">選擇設備</th>
+
+					<th scope="col" class="c1"></th>
+				</tr>
+			</thead>
+
+
+
+
+			<tbody>
+				<tr>
+					<th scope="row">
+					<td><input type="radio" name="test" value="1">1</td>
+					<td><input type="radio" name="test" value="2">2</td>
+					</th>
+				</tr>
+				<tr>
+					<th scope="row">
+					<td><input type="radio" name="test" value="3">3</td>
+					<td><input type="radio" name="test" value="4">4</td>
+					</th>
+				</tr>
+				<tr>
+					<th scope="row">
+					<td><input type="radio" name="test" value="5">5</td>
+					<td><input type="radio" name="test" value="6">6</td>
+					</th>
+				</tr>
+			</tbody>
+		</table>
+  -->
+		<table class="table">
+			<thead>
+				<tr>
+					<th class="c2" scope="col">ETC</th>
+					<th scope="col">算力</th>
+					<th scope="col">價格</th>
+					<th scope="col">電力</th>
+					<th scope="col">產值</th>
+					<th scope="col">庫存</th>
+					<th class="c1" scope="col"></th>
+					<th scope="col" style="background: white"></th>
+				</tr>
+			</thead>
+
+
+
+
+			<tbody th:each="name,item:${names}">
+				<tr>
+					<th scope="row" th:text="${name.name}">
+					<td th:text="${name.poolcomputingpower8}"></td>
+					<td th:text="${name.price}"></td>
+					<td th:text="${name.powerwattage}"></td>
+					<td th:text="${name.dailytheoreticalreturn8}"></td>
+					<td th:text="${name.instock}"></td>
+					<td><form th:action="@{/coin/user/addthisdata}" method="POST">
+							<input type="hidden" name="cards" th:value="${name.name}">
+							<input type="submit" value="添加">
+						</form></td>
+					<td></td>
+
+					</th>
+				</tr>
+			</tbody>
+		</table>
+
+		<table class="table tables" style="border: 2px solid black;">
+			<thead>
+				<tr>
+					<th class="c2"></th>
+					<th></th>
+					<th scope="col"></th>
+					<th scope="col">我的設備</th>
+					<th scope="col"></th>
+					<th scope="col"></th>
+					<th class="c1" scope="col"></th>
+				</tr>
+			<tbody>
+
+				<tr th:if="${session.cards1!=null}">
+					<th scope="row">
+					<td th:text="${session.cards1}"></td>
+					<td></td>
+					<td><form th:action="@{/coin/user/clearthedata}" method="POST">
+							<input type="hidden" name="card" value="1"> <input
+								type="submit" value="移除">
+						</form></td>
+					<td></td>
+					<td></td>
+					<td></td>
+
+					</th>
+
+				</tr>
+				<tr th:if="${session.cards2!=null}">
+					<th scope="row">
+					<td th:text="${session.cards2}"></td>
+					<td></td>
+					<td><form th:action="@{/coin/user/clearthedata}" method="POST">
+							<input type="hidden" name="card" value="2"> <input
+								type="submit" value="移除">
+						</form></td>
+					<td></td>
+					<td></td>
+					<td></td>
+
+					</th>
+
+				</tr>
+				<tr th:if="${session.cards3!=null}">
+					<th scope="row">
+					<td th:text="${session.cards3}"></td>
+					<td></td>
+					<td><form th:action="@{/coin/user/clearthedata}" method="POST">
+							<input type="hidden" name="card" value="3"> <input
+								type="submit" value="移除">
+						</form></td>
+					<td></td>
+					<td></td>
+					<td></td>
+
+					</th>
+
+				</tr>
+				<tr th:if="${session.cards4!=null}">
+					<th scope="row">
+					<td th:text="${session.cards4}"></td>
+					<td></td>
+					<td><form th:action="@{/coin/user/clearthedata}" method="POST">
+							<input type="hidden" name="card" value="4"> <input
+								type="submit" value="移除">
+						</form></td>
+					<td></td>
+					<td></td>
+					<td></td>
+
+					</th>
+
+				</tr>
+				<tr th:if="${session.cards5!=null}">
+					<th scope="row">
+					<td th:text="${session.cards5}"></td>
+					<td></td>
+					<td><form th:action="@{/coin/user/clearthedata}" method="POST">
+							<input type="hidden" name="card" value="5"> <input
+								type="submit" value="移除">
+						</form></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					</th>
+
+				</tr>
+				<tr th:if="${session.cards6!=null}">
+					<th scope="row">
+					<td th:text="${session.cards6}"></td>
+					<td></td>
+					<td><form th:action="@{/coin/user/clearthedata}" method="POST">
+							<input type="hidden" name="card" value="6"> <input
+								type="submit" value="移除">
+						</form></td>
+					<td></td>
+					<td></td>
+					<td></td>
+
+					</th>
+
+				</tr>
+				<tr th:if="${session.cards7!=null}">
+					<th scope="row">
+					<td th:text="${session.cards7}"></td>
+					<td></td>
+					<td><form th:action="@{/coin/user/clearthedata}" method="POST">
+							<input type="hidden" name="card" value="7"> <input
+								type="submit" value="移除">
+						</form></td>
+					<td></td>
+					<td></td>
+					<td></td>
+
+					</th>
+
+				</tr>
+				<tr th:if="${session.cards8!=null}">
+					<th scope="row">
+					<td th:text="${session.cards8}"></td>
+					<td></td>
+					<td><form th:action="@{/coin/user/clearthedata}" method="POST">
+							<input type="hidden" name="card" value="8"> <input
+								type="submit" value="移除">
+						</form></td>
+					<td></td>
+					<td></td>
+					<td></td>
+
+					</th>
+
+				</tr>
+				<tr>
+					<th scope="row">
+					<td>電力</td>
+					<td th:text="${session.powerwattage}"></td>
+					<td>算力</td>
+
+					<td th:text="${session.Poolcomputingpower}"></td>
+					<td>日電費</td>
+					<td th:text="${session.totalpower}"></td>
+					</th>
+
+				</tr>
+				<tr>
+					<th scope="row">
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+
+					<td><form th:action="@{/coin/user/sendanorder}" method="POST">
+							<input type="hidden" name="powerwattage"
+								th:value="${session.powerwattage}"> <input type="hidden"
+								name="Poolcomputingpower"
+								th:value="${session.Poolcomputingpower}"> <input
+								type="hidden" th:value="${session.cards1}" name="card1">
+							<input type="hidden" th:value="${session.cards2}" name="card2">
+							<input type="hidden" th:value="${session.cards3}" name="card3">
+							<input type="hidden" th:value="${session.cards4}" name="card4">
+							<input type="hidden" th:value="${session.cards5}" name="card5">
+							<input type="hidden" th:value="${session.cards6}" name="card6">
+							<input type="hidden" th:value="${session.cards7}" name="card7">
+							<input type="hidden" th:value="${session.cards8}" name="card8">
+							<input type="hidden" name="totalpower"
+								th:value="${session.totalpower}"> <input type="submit"
+								value="送出訂單">
+						</form></td>
+					</th>
+				</tr>
+			</tbody>
+
+		</table>
+
+	</div>
+
+
+
+	<!-- Bootstrap core JavaScript -->
+	<script th:src="@{/static/vendor/jquery/jquery.min.js}"></script>
+
+	<script th:src="@{/static/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+</body>
+
+
+
+
+
+</html>

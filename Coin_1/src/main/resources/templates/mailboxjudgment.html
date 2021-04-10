@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+
+<style>
+</style>
+<link th:href="@{/static/css/mailboxjudgment.css}" rel="stylesheet"
+	type="text/css">
+
+
+
+</head>
+
+<body>
+
+	<div id="table">
+		<div id="logo">LOGO</div>
+		<div class="secondLine">
+			寄送郵寄信箱<br>
+			<p th:text="${email} "></p>
+		</div>
+
+
+
+		<form th:action="@{/coin/user/mailboxverification}" method="POST">
+			<div class="character">
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;電子信箱驗證碼<br>
+
+
+			</div>
+			<input type="hidden" class="tx" name="email" th:value="${email}">
+
+			<input type="text" name="code" class="tx">
+
+
+			<!--<a class="atag"
+				th:href="@{/coin/user/emailverification}">重新寄送驗證碼</a>  -->
+
+			<br> <br> <br> <br> <br> <br> <span
+				th:text="${result} "></span> <input type="submit" value="驗證"
+				class="registered">
+		</form>
+		<span class="registered emailcode" th:text="${emailcode_1}"></span>
+		<form th:action="@{/coin/user/reemailcode}" method="post">
+			<input type="hidden" class="tx" name="email" th:value="${email}">
+			<input type="submit" value="重新寄送驗證碼" class="registered">
+		</form>
+
+	</div>
+
+</body>
+
+</html>

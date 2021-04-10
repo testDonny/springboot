@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+
+
+<link th:href="@{/static/css/signin.css}" rel="stylesheet"
+	type="text/css">
+<script th:src="@{/static/vendor/jquery/jquery.min.js}"></script>
+
+<script>
+	$(document).ready(function() {
+
+		//緩存判斷
+		$(window).load(function() {
+			if (window.name != "bencalie") {
+				location.reload();
+				window.name = "bencalie";
+			} else {
+				window.name = "";
+			}
+
+		});
+
+	});
+</script>
+</head>
+
+<body>
+
+
+
+	<div id="table">
+		<div id="logo">LOGO</div>
+
+		<p class="hov">
+			<span class="res">登入</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+				th:href="@{/coin/user/gotoregistered}">註冊</a>
+		</p>
+
+		<form th:action="@{/coin/user/loginjudgmentmodel}"  method="POST">
+			<div class="character">
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;電子郵件<br>
+				<input type="text" class="tx" name="email"> <br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;密碼<br>
+			</div>
+			<input type="password" name="password" class="tx"> <br>
+			<br> <br> <br> <br>
+			<div class="agree">
+				<br> <input type="submit" value="登入" class="registered">
+		</form>
+		<br> <a href="" style="margin-left: -40%;">忘記密碼</a>
+	</div>
+
+</body>
+
+</html>

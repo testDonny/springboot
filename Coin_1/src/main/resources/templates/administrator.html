@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th class="c2" scope="col">使用者</th>
+				<th>&nbsp;&nbsp;</th>
+				<th scope="col">帳號驗證狀態</th>
+				<th>&nbsp;&nbsp;</th>
+				<th scope="col">金額</th>
+				<th>&nbsp;&nbsp;</th>
+				<th>註冊時間</th>
+				<th scope="col" class="c1">&nbsp;&nbsp;</th>
+
+
+			</tr>
+		</thead>
+
+		<tbody th:each="user,item:${result}">
+			<tr>
+				<td th:text="${user.email}"></td>
+				<td></td>
+				<td th:text="${user.status}"></td>
+				<td></td>
+				<td th:text="${user.fishpondwallet}"></td>
+				<td></td>
+				<td th:text="${user.registrationtime1}"></td>
+				<td></td>
+
+			</tr>
+		</tbody>
+	</table>
+	<script th:src="@{/static/vendor/jquery/jquery.min.js}"></script>
+
+	<script th:src="@{/static/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

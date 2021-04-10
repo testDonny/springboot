@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+
+<style>
+* {
+	margin: 0;
+	padding: 0;
+}
+
+#table {
+	background-color: #86A8E7;
+	width: 400px;
+	height: 400px;
+	margin-left: auto;
+	margin-right: auto;
+	border: 2px solid black;
+}
+
+#logo {
+	border: 2px solid black;
+	text-align: center;
+	font-size: 30px;
+	width: 60%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 2%;
+}
+
+.hov {
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.tx {
+	margin-left: 5%;
+	width: 50%;
+	background-color: #86A8E7;
+	height: 50px;
+}
+
+.registered {
+	background-color: #86A8E7;
+	width: 40%;
+	margin-left: 30%;
+}
+
+.buttom {
+	border: black 1px solid;
+	padding-left: 5%;
+	padding-right: 5%;
+	line-height: 10px;
+	margin-left: 10%;
+	margin-right: 10%;
+	margin-top: -10%;
+	font-size: 12px;
+}
+
+.agree {
+	margin-left: 25%;
+	margin-right: 25%;
+}
+
+.ts {
+	background-color: #86A8E7;
+}
+
+.secondLine {
+	margin-left: 10%;
+	float: left;
+}
+
+.atag {
+	margin-left: 65%;
+}
+
+.phomenumber {
+	margin-left: 10%;
+}
+
+#city {
+	height: 50px;
+}
+
+.code {
+	margin-left: 10%;
+}
+
+.butom_2 {
+	text-align: center;
+	margin-top: 10%;
+	width: 100px;
+	height: 50px;
+}
+
+.Sendbutton {
+	width: 60px;
+	height: 50px;
+}
+
+.result {
+	text-align: center;
+	margin-left: 40%;
+	color: red;
+}
+</style>
+
+
+
+</head>
+
+<body>
+
+	<div id="table">
+		<div id="logo">LOGO</div>
+		<br> <br> <span class="phomenumber">手機號碼</span><br>
+		<div class="secondLine">
+
+
+
+			<form th:action="@{/coin/user/iwantaverificationcodeformyphone}"
+				method="POST">
+				<select name="city" onchange="isSelected(this.value);" id="city">
+					<option value="1">+886</option>
+					<option value="2">+86</option>
+					<option value="3">+852</option>
+					<option value="4">+853</option>
+					<option value="5">+81</option>
+					<option value="6">+82</option>
+					<option value="7">+65</option>
+					<option value="8">+60</option>
+					<option value="9">+62</option>
+					<option value="10">+964</option>
+					<option value="11">+62</option>
+					<option value="12">+66</option>
+					<option value="13">+84</option>
+					<option value="14">+94</option>
+					<option value="15">+90</option>
+					<option value="16">+91</option>
+					<option value="17">+92</option>
+					<option value="18">+977</option>
+					<option value="19">+966</option>
+					<option value="20">+960</option>
+				</select>
+		</div>
+
+		<input type="hidden" name="email" th:value="${email}"> <input
+			type="text" name="phone" class="tx">&nbsp;&nbsp;<input
+			class="Sendbutton" type="submit" value="寄送">
+		</form>
+		<br> <br> <br> <br>
+		<div>
+			<span class="code">驗證碼</span>
+			<form
+				th:action="@{/coin/user/mobilephoneverificationcodeverification}"
+				method="POST">
+				<input type="text" name="code" class="tx"> <input
+					type="hidden" name="phone" th:value="${phone}"> <!-- <a href="">從發驗證碼</a> -->
+		</div>
+		<sapn class="result" th:text="${result} "></sapn>
+		<input type="hidden" name="email" th:value="${email}"> 
+		<input class="butom_2" type="submit" value="確認">
+		</form>
+		<sapn class="result" th:text="${error} "></sapn>
+
+	</div>
+
+</body>
+
+</html>
+
+
+
+<script>
+	function isSelected(value) {
+		var city = document.getElementById("city");
+
+	}
+</script>

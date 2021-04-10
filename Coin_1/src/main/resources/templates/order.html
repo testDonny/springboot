@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<span th:text="名稱"></span>
+	<span th:text="${card1}"></span>
+	<span th:text="  電力  "></span>
+	<span th:text="${powerwattage1}"></span>
+	<span th:text="  產值  "></span>
+	<span th:text="${dailytheoreticalreturn1}"></span>
+	<span th:text="  價錢  "></span>
+	<span th:text="${price1}"></span>
+	<br>
+	<span th:text="名稱"></span>
+	<span th:text="${card2}"></span>
+	<span th:text="  電力  "></span>
+	<span th:text="${powerwattage2}"></span>
+	<span th:text="  產值  "></span>
+	<span th:text="${dailytheoreticalreturn2}"></span>
+	<span th:text="  價錢  "></span>
+	<span th:text="${price2}"></span>
+	<br>
+	<span th:text="名稱"></span>
+	<span th:text="${card3}"></span>
+	<span th:text="  電力  "></span>
+	<span th:text="${powerwattage3}"></span>
+	<span th:text="  產值  "></span>
+	<span th:text="${dailytheoreticalreturn3}"></span>
+	<span th:text="  價錢  "></span>
+	<span th:text="${price3}"></span>
+	<br>
+	<span th:text="名稱"></span>
+	<span th:text="${card4}"></span>
+	<span th:text="  電力  "></span>
+	<span th:text="${powerwattage4}"></span>
+	<span th:text="  產值  "></span>
+	<span th:text="${dailytheoreticalreturn4}"></span>
+	<span th:text="  價錢  "></span>
+	<span th:text="${price4}"></span>
+	<br>
+	<span th:text="名稱"></span>
+	<span th:text="${card5}"></span>
+	<span th:text="  電力  "></span>
+	<span th:text="${powerwattage5}"></span>
+	<span th:text="  產值  "></span>
+	<span th:text="${dailytheoreticalreturn5}"></span>
+	<span th:text="  價錢  "></span>
+	<span th:text="${price5}"></span>
+	<br>
+	<span th:text="名稱"></span>
+	<span th:text="${card6}"></span>
+	<span th:text="  電力  "></span>
+	<span th:text="${powerwattage6}"></span>
+	<span th:text="  產值  "></span>
+	<span th:text="${dailytheoreticalreturn6}"></span>
+	<span th:text="  價錢  "></span>
+	<span th:text="${price6}"></span>
+	<br>
+	<span th:text="名稱"></span>
+	<span th:text="${card7}"></span>
+	<span th:text="  電力  "></span>
+	<span th:text="${powerwattage7}"></span>
+	<span th:text="  產值  "></span>
+	<span th:text="${dailytheoreticalreturn7}"></span>
+	<span th:text="  價錢  "></span>
+	<span th:text="${price7}"></span>
+	<br>
+	<span th:text="名稱"></span>
+	<span th:text="${card8}"></span>
+	<span th:text="  電力  "></span>
+	<span th:text="${powerwattage8}"></span>
+	<span th:text="  產值  "></span>
+	<span th:text="${dailytheoreticalreturn8}"></span>
+	<span th:text="  價錢  "></span>
+	<span th:text="${price8}"></span>
+	<br>
+	<span th:text="  總瓦數  "></span>
+	<span th:text="${powerwattage}"></span>
+	<span th:text="總產值"></span>
+	<span th:text="${dailytheoreticalreturn}"></span>
+	<span th:text="總額"></span>
+	<span th:text="${prices}"></span>
+
+	<form th:action="@{/coin/user/confirmorder}" method="post">
+		<input type="hidden" name="powerwattage" th:value="${powerwattage}"> <input
+			type="hidden" name="dailytheoreticalreturn" th:value="${dailytheoreticalreturn}">
+			 <input type="hidden" name="amountreceived" th:value="${prices}">
+			 <input type="hidden" name="card1" th:value="${card1}">
+			  <input type="hidden" name="card2" th:value="${card2}">
+			   <input type="hidden" name="card3" th:value="${card3}">
+			    <input type="hidden" name="card4" th:value="${card4}">
+			     <input type="hidden" name="card5" th:value="${card5}">
+			      <input type="hidden" name="card6" th:value="${card6}">
+			       <input type="hidden" name="card7" th:value="${card7}">
+			        <input type="hidden" name="card8" th:value="${card8}">
+
+			  <input type="submit" value="送出訂單">
+	</form>
+
+</body>
+</html>

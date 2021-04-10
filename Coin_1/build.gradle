@@ -1,0 +1,109 @@
+
+buildscript {
+
+	ext{
+	swaggerVersion = '2.9.2'
+	}
+}
+plugins {
+	id 'org.springframework.boot' version '2.4.3'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+	
+
+}
+
+group = 'com.te'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+		//       爬蟲
+	maven{url 'http://maven.aliyun.com/nexus/content/groups/public/'}
+
+    jcenter();
+    	//       爬蟲
+}
+
+dependencies {
+
+	compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.23'
+	
+
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version: '2.4.3'
+
+
+ 	implementation "org.springframework.boot:spring-boot-starter-aop"
+ 
+ 	implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.11'
+
+ 	
+ 	implementation group: 'com.cloudbees', name: 'syslog-java-client', version: '1.1.7'
+
+
+	implementation group: 'com.google.guava', name: 'guava', version: '30.1-jre'
+	
+
+ 	//jdbc
+ 	implementation "org.mariadb.jdbc:mariadb-java-client:2.4.3"
+ 
+ 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+ 	implementation 'org.springframework.boot:spring-boot-starter-web'
+ 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	// lombok
+	implementation "org.projectlombok:lombok:1.18.16"
+	//compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.18'
+
+	implementation group: 'org.renjin.cran', name: 'assertthat', version: '0.2.1-b8'
+	testImplementation 'io.projectreactor:reactor-test'
+	implementation('org.springframework.boot:spring-boot-starter-data-rest')
+	implementation group: 'org.springframework', name: 'spring-core', version: '5.3.4'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-devtools', version: '2.4.3'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-freemarker', version: '2.4.3'
+	
+		//swagger
+	implementation "io.springfox:springfox-swagger2:${swaggerVersion}"
+	implementation "io.springfox:springfox-swagger-ui:${swaggerVersion}"
+	
+		//apache
+	implementation 'commons-beanutils:commons-beanutils:1.7.0'
+	implementation 'commons-codec:commons-codec:1.9'
+	implementation 'commons-io:commons-io:2.6'
+	
+	
+	implementation 'org.apache.commons:commons-math3:3.6.1'
+	
+	
+	//       爬蟲
+	implementation 'com.cv4j.netdiscovery:netdiscovery-core:0.0.9.3'
+    implementation 'com.cv4j.netdiscovery:netdiscovery-extra:0.0.9.3'
+	// https://mvnrepository.com/artifact/us.codecraft/webmagic-core
+	implementation group: 'us.codecraft', name: 'webmagic-core', version: '0.7.4'
+	// https://mvnrepository.com/artifact/us.codecraft/webmagic-extension
+	implementation group: 'us.codecraft', name: 'webmagic-extension', version: '0.7.4'
+	
+	
+	
+	implementation group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.3'
+	
+	//testImplementation group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.25'
+	
+	implementation group: 'us.codecraft', name: 'webmagic-core', version: '0.7.4'
+	implementation group: 'us.codecraft', name: 'webmagic-extension', version: '0.7.4'
+
+
+	
+	
+		// Use JUnit test framework
+	testImplementation ('junit:junit:4.12') {
+		exclude group: 'org.hamcrest', module: 'hamcrest-core'
+	}
+	
+	
+}
+
+test {
+	useJUnitPlatform()
+}

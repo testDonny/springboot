@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th class="c2" scope="col">審核狀態</th>
+				<th>&nbsp;&nbsp;</th>
+				<th scope="col">訂單產生時間</th>
+				<th>&nbsp;&nbsp;</th>
+				<th scope="col">訂單通過時間</th>
+				<th>&nbsp;&nbsp;</th>
+				<th scope="col">金額</th>
+				<th>&nbsp;&nbsp;</th>
+				<th scope="col">交易</th>
+				<th>&nbsp;&nbsp;</th>
+				<th scope="col">日理論收益</th>
+				<th>&nbsp;&nbsp;</th>
+
+				<th scope="col">瓦數</th>
+				<th>&nbsp;&nbsp;</th>
+				<th scope="col">使用者信箱</th>
+				<th>&nbsp;&nbsp;</th>
+				<th scope="col" class="c1">審核</th>
+
+
+			</tr>
+		</thead>
+
+		<tbody th:each="name,item:${result}">
+			<tr>
+				<td th:text="${name.approvalstatus}"></td>
+				<td></td>
+				<td th:text="${name.time}"></td>
+				<td></td>
+				<td th:text="${name.times}"></td>
+				<td></td>
+				<td th:text="${name.amountreceived}"></td>
+
+				<td></td>
+				<td th:text="${name.status}"></td>
+				<td></td>
+				<td th:text="${name.dailytheoreticalreturn}"></td>
+				<td></td>
+				<td th:text="${name.powerwattage}"></td>
+				<td></td>
+				<td th:text="${name.personalCenter.email}"></td>
+				<td></td>
+				<td th:if="${name.approvalstatus=='審核中'}">
+					<form th:action="@{/coin/administrator/approved}" method="post">
+						<input type="hidden" name="id" th:value="${name.id}"> <input
+							type="hidden" name="fishpondwallet"
+							th:value="${name.amountreceived}"> <input type="submit"
+							value="通過審核">
+					</form>
+
+					<form action="http://localhost:10084/coin/administrator/rejectreview" method="post">
+						<input type="hidden" name="id" th:value="${name.id}"> <input
+							type="submit" value="駁回訂單">
+					</form>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<script th:src="@{/static/vendor/jquery/jquery.min.js}"></script>
+
+	<script th:src="@{/static/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
